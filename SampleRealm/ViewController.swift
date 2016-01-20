@@ -12,10 +12,14 @@ import RealmSwift
 class ViewController: UIViewController {
     
     let realm = try! Realm()
+    
+    let defaultFilePath = RLMRealm.defaultRealm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
