@@ -8,8 +8,11 @@
 
 import UIKit
 import RealmSwift
+import Realm
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    @IBOutlet var imageView: UIImageView!
     
     let realm = try! Realm()
     
@@ -25,6 +28,50 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    @IBAction func accessToPhotos() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .PhotoLibrary
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        self.presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func save(sender: AnyObject) {
+        if imageView.image == nil {
+            
+        }else {
+            let data = imageView.image!
+            let photos = Photo.create(data)
+            photos.save()
+            
+            
+        }
+        
+    }
+    
+    
+    @IBAction func getPhoto(sender: UIButton) {
+        let photo = Photo.loadPhoto()
+        imageView.image = photo.image
+    }
+    
+    
+//    for (i, user) in users.enumerate() {
+//    let imageView = UIImageView()
+//    imageView.frame = CGRectMake(0,CGFloat(100*i),100,100)
+//    imageView.image = user.image
+//    self.view.addSubview(imageView)
+//    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        let image: UIImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        
+        imageView.image = image
+        picker.dismissViewControllerAnimated(true, completion: nil)
     }
 
 
