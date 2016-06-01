@@ -39,10 +39,10 @@ class Photo: Object {
     dynamic private var imageData: NSData? = nil
     
     override static func primaryKey() -> String? {
-        if Photo.id > 0 {
-            Photo.id = Photo.id + 1
+        if Photo().id > 0 {
+            Photo().id = Photo().id + 1
         }
-        return Photo.id
+        return String(Photo().id)
     }
     
     override static func ignoredProperties() -> [String] {

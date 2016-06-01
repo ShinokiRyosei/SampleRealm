@@ -53,19 +53,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
-    
     @IBAction func getPhoto(sender: UIButton) {
         let photo = Photo.loadPhoto()
         imageView.image = photo.image
     }
-    
-    
-//    for (i, user) in users.enumerate() {
-//    let imageView = UIImageView()
-//    imageView.frame = CGRectMake(0,CGFloat(100*i),100,100)
-//    imageView.image = user.image
-//    self.view.addSubview(imageView)
-//    }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let image: UIImage = info[UIImagePickerControllerEditedImage] as! UIImage

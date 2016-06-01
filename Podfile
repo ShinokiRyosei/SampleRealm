@@ -2,7 +2,7 @@
 # platform :ios, '6.0'
 use_frameworks!
 target 'SampleRealm' do
-pod 'RealmSwift', '~> 0.97.0'
+pod 'RealmSwift'
 end
 
 target 'SampleRealmTests' do
